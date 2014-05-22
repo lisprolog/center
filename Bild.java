@@ -12,6 +12,14 @@ public class Bild extends Kunstwerk{
 		this.breite = breite;
 	}
 
+	public void setSehrGefragt(boolean b){
+		this.sehrGefragt = b;
+	}
+
+	public boolean getSehrGefragt(){
+		return sehrGefragt;
+	}
+
 	public double berechneVkWert(){
 		double VkWert = 0;
 		if(sehrGefragt){
@@ -23,7 +31,7 @@ public class Bild extends Kunstwerk{
 	}
 	
 	public String toString(){
-		String line = super.toString() + " - " + "Mase: " + laenge + "x" + breite;
+		String line = super.toString() + " - " + "Ma\u00dfe: " + laenge + "x" + breite;
 		return line;
 	}
 }
