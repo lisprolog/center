@@ -4,13 +4,11 @@ public class Galerie{
 
 	String name;
 	ArrayList<Kunstwerk> list;
-	ArrayList<Bild> list2;
 //	Iterator<Kunstwerk> it = list.iterator();
 
 	public Galerie(String n){
 		this.name = n;
 		this.list = new ArrayList<Kunstwerk>();
-		this.list2 = new ArrayList<Kunstwerk>(Bild);
 	}
 
 	public void setName(String n){
@@ -53,18 +51,32 @@ public class Galerie{
 	}
 
 	public int berechneAnzKunstwerke(){
-		return list.size();
+		ArrayList<Kunstwerk> b1= new ArrayList<Kunstwerk>(list);
+		return b1.size();
 	}
 
 	public int berechneAnzBilder(){
-		return 0;
-	}
-/*
-	public int berechneAnzBilderVerkauft(){
-		int bilderVerkauft = 0;
-		return bilderVerkauft;
+		int anzBild = 0;
+		for(Iterator<Kunstwerk> iterator = list.iterator();iterator.hasNext();){
+				if(iterator.next().getClass() == Bild.class){	
+				anzBild++;
+			}
+		}
+		return anzBild;
 	}
 
+	public int berechneAnzBilderVerkauft(){
+		int anzBild = 0;
+		for(Iterator<Kunstwerk> iterator = list.iterator();iterator.hasNext();){
+			Kunstwerk o = iterator.next();
+			if(o.getClass() == Bild.class && o.getVerkauftB()){
+				anzBild++;
+			}
+	
+		}
+		return anzBild;
+	}
+/*
 	public void sort(String kriterium){
 
 	}

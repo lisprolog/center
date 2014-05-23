@@ -58,6 +58,13 @@ public class Kunstwerk{
 		this.verkauft = t;
 	}
 
+	public boolean getVerkauftB(){
+		if(verkauft)
+			return true;
+		else
+			return false;
+	}
+
 	public String getVerkauft(){
 		if(verkauft)
 			return "verkauft";
