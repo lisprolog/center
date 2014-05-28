@@ -51,5 +51,4 @@ public class Plastik extends Kunstwerk{
 		String line = super.toString() + " - " + "Material: " + material;
 		return line;		
 	}
-
 }

@@ -4,7 +4,6 @@ public class Galerie{
 
 	String name;
 	ArrayList<Kunstwerk> list;
-//	Iterator<Kunstwerk> it = list.iterator();
 
 	public Galerie(String n){
 		this.name = n;
@@ -76,16 +75,38 @@ public class Galerie{
 		}
 		return anzBild;
 	}
-/*
-	public void sort(String kriterium){
 
+	public void sort(String kriterium){
+		if(kriterium.equals("Kuenstler")){
+			Collections.sort(list, new SortKunstwerkByKuenstler());
+		}else if(kriterium.equals("Titel")){
+			Collections.sort(list, new SortKunstwerkByTitel());
+		}else if(kriterium.equals("Preis")){
+			Collections.sort(list, new SortKunstwerkByBerechnePreis());
+		}
 	}
-*/
+
 	public String toString(){
 		String line = "";
-		for( Kunstwerk kw : list){
+		for(Kunstwerk kw : list){
 			line += kw + "\n"; 
 		}
 		return line;
+	}
+
+	public String saveKunstwerke(){
+		return "saved";
+	}
+
+	public void loadKunstwerke(){
+		
+	}
+
+	public void exportKunstwerke(){
+		// Kunstwerke.dat
+	}
+
+	public void importKunstwerke(){
+		
 	}
 }

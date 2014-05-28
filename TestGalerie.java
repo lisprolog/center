@@ -19,8 +19,6 @@ public class TestGalerie{
 		Bild 	kw10 = new Bild("Klimt","Judith",50000.0, 70, 80);
 		Plastik kw11 = new Plastik("Auguste Rodin","Buerger von Calais",170000.0,500,100,250,"Bronze");
 		Bild 	kw12 = new Bild("Frank","Tango", 500.0, 60, 80);
-//		Plastik kw07 = new Plastik("Laura Browne","Your Face in my Hand",1500.0,10,30,10,"Ton");
-//		Bild 	kw08 = new Bild("Brunner","Horizonte", 1100, 180, 90);
 
 		g1.add(kw01);
 		g1.add(kw02);
@@ -37,10 +35,9 @@ public class TestGalerie{
 
 		kw01.setVerkauft(true);
 		kw12.setSehrGefragt(true);
-//		kw12.getSehrGefragt();
 	
 		System.out.println(g1.toString());
-		System.out.println("---");
+//		System.out.println("-----------------------");
 //		g1.removeAtPos(0);
 //		g1.removeKunstwerk(kw12);
 //		g1.removeKuenstler("Auguste Rodin");
@@ -48,6 +45,19 @@ public class TestGalerie{
 //		System.out.println((int)g1.berechneGesamtVkWert());
 //		System.out.println(g1.berechneAnzKunstwerke());	
 //		System.out.println(g1.berechneAnzBilder());	
-		System.out.println(g1.berechneAnzBilderVerkauft());
+//		System.out.println(g1.berechneAnzBilderVerkauft());
+
+/*		System.out.println("===Kuenstler===");
+		Collections.sort(g1.list, new SortKunstwerkByKuenstler());
+		System.out.println(g1.toString());
+
+		System.out.println("===Titel===");
+		Collections.sort(g1.list, new SortKunstwerkByTitel());
+*/
+		System.out.println("========");
+		g1.sort("Preis");
+		System.out.println(g1.toString());
+
+
 	}
 }
