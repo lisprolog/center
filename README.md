@@ -1,4 +1,3 @@
-Galerie
 =======
 
 Java Exercise
