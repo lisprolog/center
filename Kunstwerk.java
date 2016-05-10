@@ -1,4 +1,4 @@
-public class Kunstwerk{
+public abstract class Kunstwerk{
 
 	protected String kuenstler;
 	protected String titel;
@@ -71,9 +71,9 @@ public class Kunstwerk{
 		else
 			return "verfuegbar";
 	}
-	public double berechneVkWert(){
-		return 0;
-	}
+	
+	// Bild and Plastik need implementation
+	public abstract double berechneVkWert();
 
 	public String toString(){
 		String line = "";
