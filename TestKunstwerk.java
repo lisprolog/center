@@ -1,3 +1,5 @@
+/** abstract class Kunstwerk cannot be instantiated!
+
 import java.util.*;
 public class TestKunstwerk{
 	public static void main(String[] args){
@@ -22,3 +24,4 @@ public class TestKunstwerk{
 //		System.out.println(k2.toString());
 	}
 }
+*/
