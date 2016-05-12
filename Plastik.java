@@ -4,37 +4,47 @@ public class Plastik extends Kunstwerk{
 	private String material;
 	private boolean sehrSelten;
 
-	public Plastik(String kuenstler, String titel, double ekPreis, int laenge, int breite, int hoehe, String material){
+	public Plastik(String kuenstler, String titel, double ekPreis, int l, int b, int h, String m){
 		super(kuenstler, titel, ekPreis); 
-		this.laenge = laenge;
-		this.breite = breite;
-		this.hoehe = hoehe; 
-		this.material = material; 
+		this.laenge = l;
+		this.breite = b;
+		this.hoehe = h; 
+		this.material = m; 
 		sehrSelten = false;
 	}
 
-	public void setLaenge(int laenge){
-		this.laenge = laenge;
-	}
-
 	public int getLaenge(){
-		return laenge;
+		return this.laenge;
 	}
 
-	public void setBreite(int breite){
-		this.breite = breite;
+	public void setLaenge(int l){
+		if(l > 200){
+			l = 200;
+		}
+		this.laenge = l;
 	}
 
 	public int getBreite(){
-		return breite;
+		return this.breite;
 	}
 
-	public void setHoehe(int hoehe){
-		this.hoehe = hoehe;
+	public void setBreite(int b){
+		if(b > 200){
+			b = 200;
+		}
+		this.breite = b;
 	}
+
 
 	public int getHoehe(){
-		return hoehe;
+		return this.hoehe;
+	}
+
+	public void setHoehe(int h){
+		if(h > 1000){
+			h = 1000;
+		}
+		this.hoehe = h;
 	}
 
 	public double berechneVkWert(){
