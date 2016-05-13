@@ -5,7 +5,7 @@ public class TestGalerie{
 		Galerie g1 = new Galerie("NewArts");
 
 		System.out.println("Galerie " + g1.getName());
-		System.out.println("-----------------------------------");
+		System.out.print("-----------------------------------");
 
 		Bild 	kw01 = new Bild("Waldmueller","Maedchen mit Kuh",12500.0, 100, 130);
 		Plastik kw02 = new Plastik("Auguste Rodin","Wasserspiel", 150000.0,5000,5000,2000, "Eisen und Stahl");
@@ -36,7 +36,7 @@ public class TestGalerie{
 		kw01.setVerkauft(true);
 		kw12.setSehrGefragt(true);
 	
-		System.out.println(g1.toString());
+//		System.out.println(g1.toString());
 //		System.out.println("-----------------------");
 //		g1.removeAtPos(0);
 //		g1.removeKunstwerk(kw12);
@@ -54,8 +54,8 @@ public class TestGalerie{
 		System.out.println("===Titel===");
 		Collections.sort(g1.list, new SortKunstwerkByTitel());
 */
-		System.out.println("========");
-		g1.sort("Preis");
+//		System.out.println("========");
+//		g1.sort("Preis");
 		System.out.println(g1.toString());
 
 

@@ -50,8 +50,8 @@ public abstract class Kunstwerk{
 		this.ekPreis = ek;
 	}
 
-	public int getEkPreis(){
-		return (int)ekPreis;
+	public double getEkPreis(){
+		return ekPreis;
 	}
 
 	public void setVerkauft(boolean t){
@@ -59,17 +59,19 @@ public abstract class Kunstwerk{
 	}
 
 	public boolean getVerkauftB(){
-		if(verkauft)
+		if(verkauft){
 			return true;
-		else
+		}else{
 			return false;
+		}
 	}
 
 	public String getVerkauft(){
-		if(verkauft)
+		if(verkauft){
 			return "verkauft";
-		else
+		}else{
 			return "verfuegbar";
+		}
 	}
 	
 	// Bild and Plastik need implementation
@@ -77,7 +79,7 @@ public abstract class Kunstwerk{
 
 	public String toString(){
 		String line = "";
-		line = kuenstler + " - " + titel +  " - " + getEkPreis() + " - " + getVerkauft();
+		line = "\n" + kuenstler + " - " + titel +  " - " + String.format("%.1f", getEkPreis()) + " - " + getVerkauft();
 		return line;
 	}
 }

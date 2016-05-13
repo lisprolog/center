@@ -89,7 +89,7 @@ public class Galerie{
 	public String toString(){
 		String line = "";
 		for(Kunstwerk kw : list){
-			line += kw + "\n"; 
+			line += kw.toString(); 
 		}
 		return line;
 	}
