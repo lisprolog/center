@@ -1,4 +1,7 @@
 import java.util.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.Writer;
 
 public class Galerie{
 
@@ -94,8 +97,24 @@ public class Galerie{
 		return line;
 	}
 
-	public String saveKunstwerke(){
-		return "saved";
+	public boolean saveKunstwerke(){
+		boolean success = false;
+		Writer writer = null;
+		try{
+    			writer = new BufferedWriter(new FileWriter("Kunstwerke.txt"));
+    			writer.write(this.toString());
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+    			if(writer != null){
+				try{
+					writer.close(); 
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return success;
 	}
 
 	public void loadKunstwerke(){
