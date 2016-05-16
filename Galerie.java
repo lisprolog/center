@@ -118,11 +118,21 @@ public class Galerie{
 	}
 
 	public void loadKunstwerke(){
-		
+    		File file = new File("Kunstwerke.txt");
+
+    		Scanner sc = new Scanner(file);
+/*
+    		while (sc.hasNextLine()) {
+    		        String line = sc.nextLine();
+    		        String[] result = line.split("\\s+");
+   		        liste.add(Arrays.toString(result));
+		}
+*/
+		return success;		
 	}
 
 	public void exportKunstwerke(){
-		// Kunstwerke.dat
+		// Kunstwerke.txt
 	}
 
 	public void importKunstwerke(){
