@@ -2,6 +2,7 @@ import java.util.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.Writer;
+import java.io.File;
 
 public class Galerie{
 
@@ -118,17 +119,16 @@ public class Galerie{
 	}
 
 	public void loadKunstwerke(){
-    		File file = new File("Kunstwerke.txt");
-
-    		Scanner sc = new Scanner(file);
-/*
-    		while (sc.hasNextLine()) {
-    		        String line = sc.nextLine();
-    		        String[] result = line.split("\\s+");
-   		        liste.add(Arrays.toString(result));
+		try{
+    			File file = new File("Kunstwerke.txt");
+    			Scanner sc = new Scanner(file);
+    			while (sc.hasNextLine()) {
+    			        String line = sc.nextLine();
+    			        System.out.println(line);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
-*/
-		return success;		
 	}
 
 	public void exportKunstwerke(){
