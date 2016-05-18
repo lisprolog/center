@@ -132,7 +132,46 @@ public class Galerie{
 	}
 
 	public void exportKunstwerke(){
-		// Kunstwerke.txt
+		boolean success = false;
+		Writer writer = null;
+		try{
+    			writer = new BufferedWriter(new FileWriter("Kunstwerke.dat"));
+    			writer.write(theString());
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+    			if(writer != null){
+				try{
+					writer.close(); 
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+
+
+	public static String line1(){
+		String result = " ";
+		for(int i = 1; i < 10; i++ ){
+			result += "         " + i;
+		}
+		return result;
+	}
+
+	public static String line2(){
+		String result = "";
+		for(int i = 1; i < 11; i++){
+			result += "0123456789";
+		}
+		return result;
+	}
+
+	public static String theString(){
+		String result = "";
+		result += line1();
+		result += "\n" + line2();
+		return result;
 	}
 
 	public void importKunstwerke(){
