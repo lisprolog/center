@@ -6,7 +6,7 @@ import java.io.File;
 
 public class Galerie{
 
-	String name;
+	private String name;
 	ArrayList<Kunstwerk> list;
 
 	public Galerie(String n){
@@ -150,7 +150,7 @@ public class Galerie{
 		}
 	}
 
-
+	// first line of export file: number of columns
 	public static String line1(){
 		String result = " ";
 		for(int i = 1; i < 10; i++ ){
@@ -159,6 +159,7 @@ public class Galerie{
 		return result;
 	}
 
+	// second line of export file: width of columns
 	public static String line2(){
 		String result = "";
 		for(int i = 1; i < 11; i++){
@@ -167,10 +168,17 @@ public class Galerie{
 		return result;
 	}
 
-	public static String theString(){
+	// the completed string for export command
+	public String theString(){
+		Kunstwerk k;
 		String result = "";
+		String kunstwerk;
 		result += line1();
 		result += "\n" + line2();
+		for(Iterator<Kunstwerk> iterator = list.iterator();iterator.hasNext();){
+			k = iterator.next();
+			result +="\n" + k.toString();
+		}
 		return result;
 	}
 
