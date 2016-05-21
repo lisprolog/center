@@ -1,4 +1,7 @@
 =======
 
-This was my first Object Oriented Programming Project.
-It is an unfinished project.
+This was my first Object Oriented Programming Project:
+to do: 
+	* loadKunstwerke()
+	* importKunstwerke()
+

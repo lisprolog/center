@@ -98,6 +98,7 @@ public class Galerie{
 		return line;
 	}
 
+	// save in File with any name
 	public boolean saveKunstwerke(){
 		boolean success = false;
 		Writer writer = null;
@@ -117,7 +118,8 @@ public class Galerie{
 		}
 		return success;
 	}
-
+	
+	// read from any file into collection
 	public void loadKunstwerke(){
 		try{
     			File file = new File("Kunstwerke.txt");
@@ -182,6 +184,7 @@ public class Galerie{
 		return result;
 	}
 
+	// read Kunstwerke.dat
 	public void importKunstwerke(){
 		
 	}

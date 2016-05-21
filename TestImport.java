@@ -3,5 +3,6 @@ public class TestImport{
 		
 		Galerie g1 = new Galerie("GalerieT02");
 		g1.importKunstwerke();
+		// import from Kunstwerke.dat
 	}
 }
