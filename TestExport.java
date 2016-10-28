@@ -3,7 +3,7 @@ public class TestExport{
 		
 		Galerie g1 = new Galerie("NewArts");
 
-		Bild 	kw01 = new Bild("Waldmueller","Maedchen mit Kuh",12500.0, 100, 130);
+		Bild 	kw01 = new Bild("Waldmuller","Maedchen mit Kuh",12500.0, 100, 130);
 		Plastik kw02 = new Plastik("Auguste Rodin","Wasserspiel", 150000.0,5000,5000,2000, "Eisen und Stahl");
 		Bild 	kw03 = new Bild("Schiele","Krumau",125000.0, 80, 100);
 		Plastik kw04 = new Plastik("Michelangelo","David", 15000000.0,100,100,350, "Marmor");

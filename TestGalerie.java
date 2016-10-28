@@ -32,29 +32,41 @@ public class TestGalerie{
 
 		kw01.setVerkauft(true);
 		kw12.setSehrGefragt(true);
-	
-//		System.out.println(g1.toString());
-//		System.out.println("-----------------------");
+		System.out.println(g1.toString());
+		System.out.println("-------------------------------------------------------");
 //		g1.removeAtPos(0);
+//		System.out.println(g1.toString());
+//		System.out.println("-------------------------------------------------------");
 //		g1.removeKunstwerk(kw12);
+//		System.out.println(g1.toString());
+//		System.out.println("-------------------------------------------------------");
 //		g1.removeKuenstler("Auguste Rodin");
 //		System.out.println(g1.toString());
-//		System.out.println((int)g1.berechneGesamtVkWert());
+//		System.out.println("-------------------------------------------------------");
+//		System.out.println(g1.berechneGesamtVkWert());
 //		System.out.println(g1.berechneAnzKunstwerke());	
 //		System.out.println(g1.berechneAnzBilder());	
 //		System.out.println(g1.berechneAnzBilderVerkauft());
 
-/*		System.out.println("===Kuenstler===");
-		Collections.sort(g1.list, new SortKunstwerkByKuenstler());
-		System.out.println(g1.toString());
+//		System.out.println("===Kuenstler===");
+//		Collections.sort(g1.list, new SortKunstwerkByKuenstler());
+//		System.out.println(g1.toString());
 
-		System.out.println("===Titel===");
-		Collections.sort(g1.list, new SortKunstwerkByTitel());
-*/
-//		System.out.println("========");
+//		System.out.println("===Titel===");
+//		Collections.sort(g1.list, new SortKunstwerkByTitel());
+//		System.out.println(g1.toString());
+
+//		System.out.println("===Preis===");
 //		g1.sort("Preis");
-		System.out.println(g1.saveKunstwerke());
-		System.out.println(g1.toString());
+//		System.out.println(g1.toString());
+
+//		System.out.println(g1.saveKunstwerke());
+//		System.out.println(g1.toString());
+//		tests passed positive! save needs to improve!
+
+		System.out.println("===load from file!===");
+		g1.loadKunstwerke();
+
 
 
 	}

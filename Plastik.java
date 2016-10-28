@@ -1,14 +1,12 @@
 public class Plastik extends Kunstwerk{
 
 	private int hoehe;
+	private int breite;
 	private String material;
 	private boolean sehrSelten;
 
 	public Plastik(String kuenstler, String titel, double ekPreis, int l, int b, int h, String m){
 		super(kuenstler, titel, ekPreis); 
-		this.laenge = l;
-		this.breite = b;
-		this.hoehe = h; 
 		this.material = m; 
 		sehrSelten = false;
 	}
@@ -16,6 +14,11 @@ public class Plastik extends Kunstwerk{
 	public int getLaenge(){
 		return this.laenge;
 	}
+
+	/**
+ 	*	Da die plausible Laenge und Breite eines Bides sich von jenen einer Plastik unterscheiden,
+ 	*	muessen die Plausibilitaetspruefungen in der jeweiligen Klasse durchgefuehrt werden.
+ 	*/
 
 	public void setLaenge(int l){
 		if(l > 200){
@@ -34,7 +37,6 @@ public class Plastik extends Kunstwerk{
 		}
 		this.breite = b;
 	}
-
 
 	public int getHoehe(){
 		return this.hoehe;
@@ -56,7 +58,12 @@ public class Plastik extends Kunstwerk{
 		}
 		return VkWert;
 	}
-	
+
+	/**
+	 *	Waldmueller - Maedchen mit Kuh - 12500.0 - verkauft - Maße: 100x130
+	 *	Rodin - Wasserspiel - 150000.0 - verfuegbar - Material: Eisen und Stahl
+	 */
+
 	public String toString(){
 		String line = super.toString() + " - " + "Material: " + material;
 		return line;		

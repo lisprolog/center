@@ -1,3 +1,8 @@
+/**
+ *	loadKunstwerke() in Galerie.java loads from any file.
+ *	importKunstwerke() is only allowed to load from "Kunstwerke.dat"
+ */
+
 public class TestLoad{
 	public static void main(String[] args){
 

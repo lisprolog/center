@@ -1,7 +1,14 @@
+/**
+ *	farbe		String
+ *	sehr gefragt	boolean
+ *	set
+ *	get
+ *	berechneVkWert	double
+ *	toString	String
+ */
+
 public class Bild extends Kunstwerk{
 
-	private int laenge;
-	private int breite;
 	private String farbe;
 	private boolean sehrGefragt;
 
@@ -17,6 +24,11 @@ public class Bild extends Kunstwerk{
 	public String getFarbe(){
 		return this.farbe;
 	}
+
+	/**
+ 	*	Da die plausible Laenge und Breite eines Bides sich von jenen einer Plastik unterscheiden,
+ 	*	muessen die Plausibilitaetspruefungen in der jeweiligen Klasse durchgefuehrt werden.
+ 	*/
 
 	public void setLaenge(int l){
 		if(l > 500){
@@ -59,7 +71,12 @@ public class Bild extends Kunstwerk{
 		}	
 		return VkWert;
 	}
-	
+
+	/**
+	 *	Waldmueller - Maedchen mit Kuh - 12500.0 - verkauft - Maße: 100x130
+	 *	Rodin - Wasserspiel - 150000.0 - verfuegbar - Material: Eisen und Stahl
+	 */
+
 	public String toString(){
 		String line = super.toString() + " - " + "Ma\u00dfe: " + laenge + "x" + breite;
 		return line;

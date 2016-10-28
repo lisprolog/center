@@ -1,26 +1,15 @@
           1         2         3         4         5         6         7         8         9
 0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
 
-Waldmueller - Maedchen mit Kuh - 12500.0 - verkauft - Maße: 100x130
-
-Auguste Rodin - Wasserspiel - 150000.0 - verfuegbar - Material: Eisen und Stahl
-
-Schiele - Krumau - 125000.0 - verfuegbar - Maße: 80x100
-
-Michelangelo - David - 15000000.0 - verfuegbar - Material: Marmor
-
-Schiele - Frau - 125000.0 - verfuegbar - Maße: 80x90
-
-Bruno Gironcoli - Weltuhr - 1500000.0 - verfuegbar - Material: Stahl und Messing
-
-Laura Browne - Your Face in my Hand - 1500.0 - verfuegbar - Material: Ton
-
-Brunner - Horizonte - 1000.0 - verfuegbar - Maße: 130x70
-
-Alberto Giacometti - Der Wagen - 10000.0 - verfuegbar - Material: Bronze
-
-Klimt - Judith - 50000.0 - verfuegbar - Maße: 70x80
-
-Auguste Rodin - Buerger von Calais - 170000.0 - verfuegbar - Material: Bronze
-
-Frank - Tango - 500.0 - verfuegbar - Maße: 60x80
+Bild	  Waldmueller 	      Maedchen mit Kuh    10000.0   n 100  130
+Plastik	  Auguste Rodin       Wasserspiel         100000.0  n 5000 5000 2000 Eisen u. Stahl
+Bild	  Schiele             Krumau              100000.0  n 80   100  
+Plastik	  Michelangelo        David               1000000.0 n 100  100  350  Marmor
+Bild	  Schiele             Frau                100000.0  n 80   90   
+Plastik	  Bruno Gironcoli     Weltuhr             1.0       n 500  700  350  Stahl u. Messing
+Plastik	  Laura Browne        Your Face in my Hand1000.0    n 10   30   10   Ton
+Bild	  Brunner             Horizonte           1000.0    n 130  70 
+Plastik	  Alberto Giacometti  Der Wagen           10000.0   n 120  60   90   Bronze
+Bild	  Klimt               Judith              50000.0   n 70   80   
+Plastik	  Auguste Rodin       Buerger von Calais  170000.0  n 500  100  250  Bronze
+Bild	  Frank               Tango               500.0     n 60   80

@@ -1,3 +1,16 @@
+/**
+ *	kuenstler	String
+ *	titel		String
+ *	laenge		int
+ *	breite		int
+ *	ekPreis		double
+ *	verkauft	boolean
+ *	set
+ *	get
+ *	verechneVkWert	double
+ *	toString	String
+ */
+
 public abstract class Kunstwerk{
 
 	protected String kuenstler;
@@ -7,14 +20,25 @@ public abstract class Kunstwerk{
 	protected double ekPreis;
 	protected boolean verkauft = false;
 
+
+	/**
+	 *	Uebernimmt Parameter Künstler, Titel, Einkaufspreis
+	 *
+	 */
+
 	public Kunstwerk(String k, String t, double p){
 		this.kuenstler = k;
 		this.titel = t;
 		this.ekPreis = p;
 	}
 
+	/**
+ 	*	Da die plausible Laenge und Breite eines Bides sich von jenen einer Plastik unterscheiden,
+ 	*	muessen die Plausibilitaetspruefungen in der jeweiligen Klasse durchgefuehrt werden.
+ 	*/
+
 	public void setLaenge(int l){
-		this.laenge = l;
+//		this.laenge = l;
 	}
 
 	public int getLaenge(){
@@ -22,7 +46,7 @@ public abstract class Kunstwerk{
 	}
 
 	public void setBreite(int b){
-		this.breite = b;
+//		this.breite = b;
 	}
 
 	public int getBreite(){
@@ -74,9 +98,13 @@ public abstract class Kunstwerk{
 		}
 	}
 	
-	// Bild and Plastik need implementation
+	// wurde hier nicht implementiert, da eine abstract class
 	public abstract double berechneVkWert();
 
+/*
+	Waldmueller - Maedchen mit Kuh - 12500.0 - verkauft - Maße: 100x130
+	Rodin - Wasserspiel - 150000.0 - verfuegbar - Material: Eisen und Stahl
+*/
 	public String toString(){
 		String line = "";
 		line = "\n" + kuenstler + " - " + titel +  " - " + String.format("%.1f", getEkPreis()) + " - " + getVerkauft();
