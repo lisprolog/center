@@ -110,4 +110,24 @@ public abstract class Kunstwerk{
 		line = "\n" + kuenstler + " - " + titel +  " - " + String.format("%.1f", getEkPreis()) + " - " + getVerkauft();
 		return line;
 	}
+
+	/**
+ 	*	To StringB will help to save/import data into .ser/.dat files with this format
+ 	*
+ 	*/
+
+	/*
+          1         2         3         4         5         6         7         8         9
+0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789
+
+Bild      Waldmueller         Maedchen mit Kuh    10000.0   n 100  130
+Plastik   Auguste Rodin       Wasserspiel         100000.0  n 5000 5000 2000 Eisen u. Stahl
+	*/
+
+	public String toStringB(){
+		String line = "";
+		line = kuenstler + "  " + titel +  "  " + String.format("%.1f", getEkPreis()) + "  " + getVerkauft();
+		return line;
+	}
+
 }

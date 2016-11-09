@@ -115,6 +115,16 @@ public class Galerie{
 		return line;
 	}
 
+	//check!
+	public String toStringB(){
+		String line = "";
+		for(Kunstwerk kw : list){
+			line += kw.toStringB(); 
+		}
+		return line;
+	}
+
+
 	/**
 	 * Stellen Sie zur Klasse Galerie eine Methode saveKunstwerke, 
 	 * mit deren Hilfe alle Informationen ueber die Kunstwerke serialisiert in eine Datei mit
@@ -122,12 +132,13 @@ public class Galerie{
 	 * save in File with any name with .ser extension
 	 *
 	 */
+
 	public boolean saveKunstwerke(){
 		boolean success = false;
 		Writer writer = null;
 		try{
     			writer = new BufferedWriter(new FileWriter("Kunstwerke.ser"));
-    			writer.write(this.toString());
+    			writer.write(this.toStringB());
 			success = true;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -161,116 +172,104 @@ Plastik	  Auguste Rodin       Buerger von Calais  170000.0  n 500  100  250  Bro
 Bild	  Frank               Tango               500.0     n 60   80
 */
 	public void loadKunstwerke(){
-		String lineNotSplit = "";
+		String lineNotSplit, wholeString = "";
 		String[] lineSplit = new String[9];
+		String tempLine, newLine1, newLine2 = "";
+		String line1, line2, line3 = "";
+		double price;
+		Kunstwerk kwTemp;
+		// open file and put data in wholeString
 		try{
-			File file = new File("Kunstwerke.dat");	// file name must change
-			Kunstwerk kwTemp;
+			// need to replace all tabs with whitespace
+			// line.trim(); get rid of whitespace
+			// line.split("\t", 4);
+			File file = new File("KunstwerkeB.dat");	// file name must change
 			Scanner sc = new Scanner(file);
-			String tempLine = "";
-			String line1, line2, line3 = "";
 			line1 = sc.nextLine(); // 1-9
-			System.out.println();
+//			System.out.println("line1: "+ line1);
 			line2 = sc.nextLine(); // 1-9
+//			System.out.println("line2: "+ line2);
 			line3 = sc.nextLine(); // \n
-			double price;
 			while(sc.hasNextLine()){
-				tempLine = sc.nextLine(); // Bild7 Plastik9
-				System.out.println("++++++++++++++++++++++++");
-				// Coordinates make difficulties with Plastik
-				lineSplit[0] = tempLine.substring(0,7);
-				System.out.println("0:" + lineSplit[0]);
-				lineSplit[1] = tempLine.substring(7,26);
-				System.out.println("1:" + lineSplit[1]);
-				lineSplit[2] = tempLine.substring(26,45);
-				System.out.println("2:" + lineSplit[2]);
-				lineSplit[3] = tempLine.substring(46,55);
-				System.out.println("3:" + lineSplit[3]);
-				lineSplit[4] = "" + tempLine.charAt(56);
-				System.out.println("4:" + lineSplit[4]);
-				lineSplit[5] = tempLine.substring(58,62);
-				System.out.println("5:" + lineSplit[5]);
-				lineSplit[6] = tempLine.substring(63);
-				System.out.println("6:" + lineSplit[6]);
-				System.out.println("++++++++++++++++++++++++");
-				System.out.println("HOHOH:"+tempLine.charAt(55));
-				// extract whitespace
-				for(int i = 0; i < 7; i++){
-					lineSplit[i] = lineSplit[i].replaceAll("\\s","");
-					System.out.println(i + ":" + lineSplit[i]);
-				}
-				System.out.println("+++++++++++++++++++++++++");
-
-				price = Double.valueOf(lineSplit[3]);
-				System.out.println(lineSplit[4].replaceAll("\\s", ""));
-				int l = Integer.valueOf(lineSplit[5].replaceAll("\\s", ""));
-				int b = Integer.valueOf(lineSplit[6]);
-				if(lineSplit[0].equals("Bild")){
-					Kunstwerk kw01 = new Bild(lineSplit[1], lineSplit[2], price, l, b); 
-					//add to list
-					add(kw01);
-				}else if(lineSplit[0].equals("Plastik")){
-					lineSplit[7] = tempLine.substring(72,76);
-					int h = Integer.valueOf(lineSplit[7]);
-					lineSplit[8] = tempLine.substring(77,99);
-					Kunstwerk kw01 = new Plastik(lineSplit[1], lineSplit[2], price, l, b, h, lineSplit[8]);
-					//add to list
-					add(kw01);
-				}else{
-					//default or error
-					System.out.println("Neither Plastik nor Bild");
-				}
-			}	
+				tempLine = sc.nextLine();
+				wholeString += tempLine + "\n";
+				System.out.println("tempLine1:"+tempLine);
+			}// while end	
 		}catch(FileNotFoundException e){
 			System.out.println(e);
-		}
-	}
+		}//try catch end
+			// extract data from wholeString
 
-/*	First version of load used wrong format and failed to convert String to double
- 		String line = "";
-		try{
-    			File file = new File("Kunstwerke.dat"); // file name must change
-			Kunstwerk kwTemp;
-    			Scanner sc = new Scanner(file);
-			String tempLine, material1, material2 = "";
-			int hohe, breite = 0;
-    			while (sc.hasNextLine()) {
-    			        tempLine = sc.nextLine();
-				System.out.println(tempLine);
-				String kunstwerkeLine[] = tempLine.split("-"); 
-				for(int i = 0; i < kunstwerkeLine.length; i++){
-					System.out.println("load:" + kunstwerkeLine[i]);
-				}
-				System.out.println(kunstwerkeLine[3]);
-				String lastKwElement[] = kunstwerkeLine[4].split(" ");
-				double priceCast = Integer.parseInt(kunstwerkeLine[2]); 
-				if(lastKwElement[0].equals("Maße:")){
-					String maße[] = lastKwElement[1].split("x"); 	
-			 		hohe = Integer.parseInt(maße[0]);
-					breite = Integer.parseInt(maße[1]);
-					kwTemp = new Bild(kunstwerkeLine[0], kunstwerkeLine[1], priceCast, hohe, breite);
-					if(kunstwerkeLine[3].equals("verkauft")){
-						kwTemp.setVerkauft(true);
-					}
-				}else{
-	
-					kwTemp = new Plastik(kunstwerkeLine[0], kunstwerkeLine[1], priceCast, kunstwerkeLine[4]);
-					if(kunstwerkeLine[3].equals("verkauft")){
-						kwTemp.setVerkauft(true);
-					}
-	
-				}
-				list.add(kwTemp);
-				line += kwTemp.toString();
-    			        System.out.println(line);
+		char c = ' ';
+		int count = 0;
+		newLine1 = "";
+		System.out.println("!\n"+wholeString+"!");
+		while(count < wholeString.length()){
+			while(c != '\n'){
+				c = wholeString.charAt(count);
+				newLine1 += c;
+				count++;
 			}
-		}catch(Exception e){
-			e.printStackTrace();
+			newLine2 = newLine1; 	// forward string for extraction
+			newLine1 = "";		// clear newLine1 for next while iteration
+			c = ' '; 		// clear \n out of c for next while iteration
+			System.out.println("templine2 :"+newLine2);
+			System.out.println("extract++++++++++++++++++++++++");
+			lineSplit[0] = newLine2.substring(0,7);
+			System.out.println("0:" + lineSplit[0]);
+
+			lineSplit[1] = newLine2.substring(10,29);
+			System.out.println("1:" + lineSplit[1]);
+			lineSplit[2] = newLine2.substring(30,50);
+			System.out.println("2:" + lineSplit[2]);
+			lineSplit[3] = newLine2.substring(50,59);
+			System.out.println("3:" + lineSplit[3]);
+			lineSplit[4] = "" + newLine2.charAt(60);
+			System.out.println("4:" + lineSplit[4]);
+			lineSplit[5] = newLine2.substring(62,66);
+			System.out.println("5:" + lineSplit[5]);
+			lineSplit[6] = newLine2.substring(67, 71);
+			System.out.println("6:" + lineSplit[6]);
+			System.out.println("++++++++++++++++++++++++");
+/*
+		System.out.println("trimmed:"+newLine.charAt(55));
+		// trimmed:
+		for(int i = 0; i < 7; i++){
+			lineSplit[i] = lineSplit[i].trim();
+			System.out.println(i + ":" + lineSplit[i]);
 		}
-
- *
- * */
-
+		System.out.println("+++++++++++++++++++++++++");
+*/
+			price = Double.valueOf(lineSplit[3]);
+			System.out.println(lineSplit[4].replaceAll("\\s", ""));
+			int l = Integer.valueOf(lineSplit[5].replaceAll("\\s", ""));
+			int b = Integer.valueOf(lineSplit[6].replaceAll("\\s", ""));
+			lineSplit[0] = lineSplit[0].replaceAll("\\s", "");
+			System.out.println("*"+ lineSplit[0]+"*");
+			if(lineSplit[0].equals("Bild")){
+				Kunstwerk kw01 = new Bild(lineSplit[1], lineSplit[2], price, l, b); 
+				//add to list
+				add(kw01);
+				System.out.println("Bild Object created");
+			}else if(lineSplit[0].equals("Plastik")){
+				lineSplit[7] = newLine2.substring(72,76);
+				System.out.println("!"+lineSplit[7]+"!");
+				lineSplit[7] = lineSplit[7].trim();
+				int h = Integer.valueOf(lineSplit[7]);
+				System.out.println("7:" + h);
+				lineSplit[8] = newLine2.substring(77);
+				System.out.println("8:" + lineSplit[8]);
+				Kunstwerk kw01 = new Plastik(lineSplit[1], lineSplit[2], price, l, b, h, lineSplit[8]);
+				//add to list
+				add(kw01);
+				System.out.println("Plastik Object created");
+			}else{
+				//default or error
+				System.out.println("Neither Plastik nor Bild");
+			}
+		}//while
+	System.out.println("Ende?");
+	}//end loadKunstwerke
 
 /*
  * load data only from "Kunstwerke.dat"
@@ -344,45 +343,103 @@ Bild	  Frank               Tango               500.0     n 60   80
 
 	// read Kunstwerke.dat instead of Kunstwerke.txt
 	public void importKunstwerke(){
-/*		String line = "";
+		String lineNotSplit, wholeString = "";
+		String[] lineSplit = new String[9];
+		String tempLine, newLine1, newLine2 = "";
+		String line1, line2, line3 = "";
+		double price;
+		Kunstwerk kwTemp;
+		// open file and put data in wholeString
 		try{
-    			File file = new File("Kunstwerke.dat");	// only this file name
-			Kunstwerk kwTemp;
-    			Scanner sc = new Scanner(file);
-			String tempLine, material1, material2 = "";
-			int hohe, breite = 0;
-    			while (sc.hasNextLine()) {
-    			        tempLine = sc.nextLine();
-				System.out.println(tempLine);
-				String kunstwerkeLine[] = tempLine.split("-"); 
-				for(int i = 0; i < kunstwerkeLine.length; i++){
-					System.out.println("load:" + kunstwerkeLine[i]);
-				}
-				System.out.println(kunstwerkeLine[3]);
-				String lastKwElement[] = kunstwerkeLine[4].split(" ");
-				double priceCast = Integer.parseInt(kunstwerkeLine[2]); 
-				if(lastKwElement[0].equals("Maße:")){
-					String maße[] = lastKwElement[1].split("x"); 	
-			 		hohe = Integer.parseInt(maße[0]);
-					breite = Integer.parseInt(maße[1]);
-					kwTemp = new Bild(kunstwerkeLine[0], kunstwerkeLine[1], priceCast, hohe, breite);
-					if(kunstwerkeLine[3].equals("verkauft")){
-						kwTemp.setVerkauft(true);
-					}
-				}else{
-	
-					kwTemp = new Plastik(kunstwerkeLine[0], kunstwerkeLine[1], priceCast, kunstwerkeLine[4]);
-					if(kunstwerkeLine[3].equals("verkauft")){
-						kwTemp.setVerkauft(true);
-					}	
-				}
-				list.add(kwTemp);
-				line += kwTemp.toString();
-    			        System.out.println(line);
+			// need to replace all tabs with whitespace
+			// line.trim(); get rid of whitespace
+			// line.split("\t", 4);
+			File file = new File("KunstwerkeB.dat");	// file name must change
+			Scanner sc = new Scanner(file);
+			line1 = sc.nextLine(); // 1-9
+//			System.out.println("line1: "+ line1);
+			line2 = sc.nextLine(); // 1-9
+//			System.out.println("line2: "+ line2);
+			line3 = sc.nextLine(); // \n
+			while(sc.hasNextLine()){
+				tempLine = sc.nextLine();
+				wholeString += tempLine + "\n";
+				System.out.println("tempLine1:"+tempLine);
+			}// while end	
+		}catch(FileNotFoundException e){
+			System.out.println(e);
+		}//try catch end
+			// extract data from wholeString
+
+		char c = ' ';
+		int count = 0;
+		newLine1 = "";
+		System.out.println("!\n"+wholeString+"!");
+		while(count < wholeString.length()){
+			while(c != '\n'){
+				c = wholeString.charAt(count);
+				newLine1 += c;
+				count++;
 			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}		
+			newLine2 = newLine1; 	// forward string for extraction
+			newLine1 = "";		// clear newLine1 for next while iteration
+			c = ' '; 		// clear \n out of c for next while iteration
+			System.out.println("templine2 :"+newLine2);
+			System.out.println("extract++++++++++++++++++++++++");
+			lineSplit[0] = newLine2.substring(0,7);
+			System.out.println("0:" + lineSplit[0]);
+
+			lineSplit[1] = newLine2.substring(10,29);
+			System.out.println("1:" + lineSplit[1]);
+			lineSplit[2] = newLine2.substring(30,50);
+			System.out.println("2:" + lineSplit[2]);
+			lineSplit[3] = newLine2.substring(50,59);
+			System.out.println("3:" + lineSplit[3]);
+			lineSplit[4] = "" + newLine2.charAt(60);
+			System.out.println("4:" + lineSplit[4]);
+			lineSplit[5] = newLine2.substring(62,66);
+			System.out.println("5:" + lineSplit[5]);
+			lineSplit[6] = newLine2.substring(67, 71);
+			System.out.println("6:" + lineSplit[6]);
+			System.out.println("++++++++++++++++++++++++");
+/*
+		System.out.println("trimmed:"+newLine.charAt(55));
+		// trimmed:
+		for(int i = 0; i < 7; i++){
+			lineSplit[i] = lineSplit[i].trim();
+			System.out.println(i + ":" + lineSplit[i]);
+		}
+		System.out.println("+++++++++++++++++++++++++");
 */
+			price = Double.valueOf(lineSplit[3]);
+			System.out.println(lineSplit[4].replaceAll("\\s", ""));
+			int l = Integer.valueOf(lineSplit[5].replaceAll("\\s", ""));
+			int b = Integer.valueOf(lineSplit[6].replaceAll("\\s", ""));
+			lineSplit[0] = lineSplit[0].replaceAll("\\s", "");
+			System.out.println("*"+ lineSplit[0]+"*");
+			if(lineSplit[0].equals("Bild")){
+				Kunstwerk kw01 = new Bild(lineSplit[1], lineSplit[2], price, l, b); 
+				//add to list
+				add(kw01);
+				System.out.println("Bild Object created");
+			}else if(lineSplit[0].equals("Plastik")){
+				lineSplit[7] = newLine2.substring(72,76);
+				System.out.println("!"+lineSplit[7]+"!");
+				lineSplit[7] = lineSplit[7].trim();
+				int h = Integer.valueOf(lineSplit[7]);
+				System.out.println("7:" + h);
+				lineSplit[8] = newLine2.substring(77);
+				System.out.println("8:" + lineSplit[8]);
+				Kunstwerk kw01 = new Plastik(lineSplit[1], lineSplit[2], price, l, b, h, lineSplit[8]);
+				//add to list
+				add(kw01);
+				System.out.println("Plastik Object created");
+			}else{
+				//default or error
+				System.out.println("Neither Plastik nor Bild");
+			}
+		}//while
+	System.out.println("Ende?");
+
 	}
 }

@@ -10,7 +10,6 @@ public class TestLoad{
 		g1.loadKunstwerke();
 		// read from any file into collection
 		System.out.println("load ende!");
-		g1.toString();
-		
+		System.out.println(g1.toString());	
         }
 }
