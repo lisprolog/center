@@ -107,7 +107,11 @@ public abstract class Kunstwerk{
 */
 	public String toString(){
 		String line = "";
-		line = "\n" + kuenstler + " - " + titel +  " - " + String.format("%.1f", getEkPreis()) + " - " + getVerkauft();
+		String preis = "" + String.format("%.1f", getEkPreis());
+		while(preis.length() < 10){
+			preis += " ";	
+		}
+		line = "\n" + kuenstler + " - " + titel +  " - " + preis + " - " + getVerkauft();
 		return line;
 	}
 
@@ -122,11 +126,31 @@ public abstract class Kunstwerk{
 
 Bild      Waldmueller         Maedchen mit Kuh    10000.0   n 100  130
 Plastik   Auguste Rodin       Wasserspiel         100000.0  n 5000 5000 2000 Eisen u. Stahl
+
+***********max laenge and max breite for Plastik: 200 x 200!!!! auguste rodin will be corrected by implementation after input!******
 	*/
 
 	public String toStringB(){
 		String line = "";
-		line = kuenstler + "  " + titel +  "  " + String.format("%.1f", getEkPreis()) + "  " + getVerkauft();
+		String kuenstler2 = kuenstler;
+		String title2 = titel;
+		String preis = "" + String.format("%.1f", getEkPreis());
+		while(kuenstler2.length() < 19){
+			kuenstler2 += " ";
+		}
+		while(title2.length() < 20){
+			title2 += " ";
+		}
+		while(preis.length() < 9){
+			preis += " ";
+		}
+		String n = "";
+		if(getVerkauft().equals("verfuegbar")){
+			n = "n";
+		}else{
+			n = "v";
+		}
+		line = kuenstler2 + " " + title2 +  "" + preis + " " + n;
 		return line;
 	}
 

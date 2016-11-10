@@ -9,7 +9,8 @@ public class TestLoad{
 		Galerie g1 = new Galerie("Galerie");
 		g1.loadKunstwerke();
 		// read from any file into collection
-		System.out.println("load ende!");
-		System.out.println(g1.toString());	
+		System.out.println("Load Ende!");
+		System.out.println(g1.toString());
+		System.out.println(g1.toStringB());	
         }
 }

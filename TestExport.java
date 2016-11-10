@@ -33,6 +33,8 @@ public class TestExport{
 		kw12.setSehrGefragt(true);
 
 		g1.exportKunstwerke();
+		System.out.println(g1.toString());
+		System.out.println(g1.toStringB());
 	}
 
 

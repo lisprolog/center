@@ -8,8 +8,9 @@ public class TestImport{
 		Galerie g1 = new Galerie("ImportGalerie");
 		g1.importKunstwerke();
 		// import from Kunstwerke.dat
-		System.out.println("import ende!");
-		g1.toString();
+		System.out.println("Import Ende!");
+		System.out.println(g1.toString());
+		System.out.println(g1.toStringB());
 
 	}
 }

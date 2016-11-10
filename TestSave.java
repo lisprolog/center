@@ -25,6 +25,7 @@ Bild      Klimt               Judith              50000.0   n 70   80
 Plastik   Auguste Rodin       Buerger von Calais  170000.0  n 500  100  250  Bronze
 Bild      Frank               Tango               500.0     n 60   80                             
 
+***********max laenge and max breite for Plastik: 200 x 200!!!! auguste rodin will be corrected by implementation after input!******
 */
 
 public class TestSave{
@@ -37,7 +38,8 @@ public class TestSave{
 		g1.add(kw01);
 		g1.add(kw02);
 		kw01.setVerkauft(true);
-		System.out.println(g1.saveKunstwerke());
+		g1.saveKunstwerke();
+		System.out.println(g1.toString());
 		System.out.println(g1.toStringB());
 	}
 }
