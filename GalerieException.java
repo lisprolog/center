@@ -1,5 +1,5 @@
 /**
- *	Erstellen sie eine Klasse GalierieException, mit deren Hilfe saemtliche Problemsituationen
+ *	Erstellen sie eine Klasse GalerieException, mit deren Hilfe saemtliche Problemsituationen
  *	behandelt werden koennen.
  */
 
